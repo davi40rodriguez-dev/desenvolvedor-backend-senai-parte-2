@@ -24,7 +24,7 @@ class Program
         else
         {
             Console.WriteLine("Reprovado");
-         
+            Console.WriteLine($"Falta {60 - d.NotaFinal()}" );
         }
     }
 }
