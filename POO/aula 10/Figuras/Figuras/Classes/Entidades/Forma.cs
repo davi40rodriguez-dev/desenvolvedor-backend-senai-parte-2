@@ -1,4 +1,4 @@
-﻿using Figuras.Classes.;
+﻿using Figuras.Classes.Contratos;
 using Figuras.Classes.Enumeração;
 
 
