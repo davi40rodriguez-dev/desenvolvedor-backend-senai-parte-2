@@ -20,8 +20,10 @@ for (int i = 0; i < qtd;  i++)
         "\n\t3 - Amarelo" +
         "\n\t4 - Rosa");
     int cor = int.Parse(ReadLine());
-
-
+        Write("Digite a largura do retângulo: ");
+        double l = double.Parse(ReadLine());
+        double r = double.Parse(ReadLine());
+        formas.Add(new Circulo((Cor)cor, r));
 
     }
 }
