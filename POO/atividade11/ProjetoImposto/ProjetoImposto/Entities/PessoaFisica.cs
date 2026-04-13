@@ -1,13 +1,15 @@
-﻿namespace ProjetoImposto.Models
+﻿using System;
+
+namespace ProjetoImposto.Entities
 {
     class PessoaFisica : Contribuinte
     {
         public double GastosSaude { get; set; }
 
-        public PessoaFisica(string nome, double rendaAnual, double gastosSaude)
-            : base(nome, rendaAnual)
+        public PessoaFisica(string nome, double renda, double saude)
+            : base(nome, renda)
         {
-            GastosSaude = gastosSaude;
+            GastosSaude = saude;
         }
 
         public override double CalcularImposto()

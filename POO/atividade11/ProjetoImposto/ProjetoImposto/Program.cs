@@ -1,15 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using ProjetoImposto.Models;
+using ProjetoImposto.Entities;
 
 class Program
 {
     static void Main(string[] args)
     {
+        List<Contribuinte> lista = new List<Contribuinte>();
+
         Console.Write("Quantos contribuintes? ");
         int n = int.Parse(Console.ReadLine());
-
-        List<Contribuinte> lista = new List<Contribuinte>();
 
         for (int i = 0; i < n; i++)
         {
@@ -45,10 +45,10 @@ class Program
         foreach (Contribuinte c in lista)
         {
             double imposto = c.CalcularImposto();
-            Console.WriteLine(c.Nome + ": R$ " + imposto);
+            Console.WriteLine(c.Nome + ": R$ " + imposto.ToString("F2"));
             total += imposto;
         }
 
-        Console.WriteLine("\nTOTAL: R$ " + total);
+        Console.WriteLine("\nTOTAL: R$ " + total.ToString("F2"));
     }
 }

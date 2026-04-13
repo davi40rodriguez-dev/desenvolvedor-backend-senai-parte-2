@@ -1,6 +1,8 @@
-﻿namespace ProjetoImposto.Models
+﻿using System;
+
+namespace ProjetoImposto.Entities
 {
-    abstract class Contribuinte : IImposto
+    abstract class Contribuinte
     {
         public string Nome { get; set; }
         public double RendaAnual { get; set; }
@@ -13,4 +15,4 @@
 
         public abstract double CalcularImposto();
     }
-} 
+}
