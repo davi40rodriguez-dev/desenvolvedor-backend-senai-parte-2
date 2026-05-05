@@ -1,0 +1,141 @@
+﻿using Microsoft.Data.SqlClient;
+
+namespace MasterBanco.Classes.Entidade
+{
+    internal class Banco
+    {
+        //Campo
+        private const decimal TaxaSaque = 5.00m;
+
+        //Propriedades
+        public int Id { get; set; }
+        public string Titular { get; set; }
+        public int NumeroConta { get; set; }
+        public decimal Saldo { get; set; }
+
+        //Construtores
+        public Banco() { }
+
+        public Banco(string titular, int numero_da_conta, decimal saldo)
+        {
+            Titular = titular;
+            NumeroConta = numero_da_conta;
+            Saldo = saldo;
+        }
+
+        public Banco(string titular, int numero_da_conta) : this()
+        {
+            Saldo = 0;
+        }
+
+
+
+        //Caminho do servidor onde está o banco de dados
+        private static string conectarCaminho = @"Server = ECFP507D1319386\SQLEXPRESS;Database = BancoDB;Trusted_Connection = True; TrustServerCertificate = True";
+
+        // Operações CRUD
+        // C - Create
+        public static void CadastrarContas(Banco banco)
+        {
+            //Query
+            string consulta = "INSERT INTO " +
+            "Contas(Titular,NumeroConta,Saldo)" +
+            "VALUES" +
+            "(@Titular, @Numero_da_conta, @Saldo)";
+            using (SqlConnection conexao = new SqlConnection(conectarCaminho))
+            using (SqlCommand comando = new SqlCommand(consulta, conexao))
+            {
+                comando.Parameters.AddWithValue("@Titular", banco.Titular);
+                comando.Parameters.AddWithValue("@Numero_da_conta", banco.NumeroConta);
+                comando.Parameters.AddWithValue("@Saldo", banco.Saldo);
+
+                conexao.Open();
+                int resultado = comando.ExecuteNonQuery();
+
+                if (resultado > 0)
+                {
+                    Console.WriteLine($"Conta cadastrado com sucesso!");
+                }
+            }
+        }
+
+        //R - Read
+        public static void LerContas()
+        {
+            string consulta = "SELECT Id,Titular,NumeroConta,Saldo FROM Contas";
+            using (SqlConnection conexao = new SqlConnection(conectarCaminho))
+            using (SqlCommand comando = new SqlCommand(consulta, conexao))
+            {
+                conexao.Open();
+                using (SqlDataReader leitura = comando.ExecuteReader())
+                {
+                    if (leitura.HasRows)
+                    {
+                        while (leitura.Read())
+                        {
+                            Console.WriteLine($"ID:{leitura["Id"]} |" +
+                            $" Conta: {leitura["NumeroConta"]} | " +
+                            $" Titular: {leitura["Titular"]} | " +
+                            $" Saldo: R$ {leitura["Saldo"]}");
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("Nenhuma conta encontrada");
+                    }
+                }
+
+            }
+        }
+
+        //U - Update
+        public static void ModificarConta(int id, string titular, int numeroConta, decimal saldo)
+        {
+            string consulta = "UPDATE Contas SET Titular = @titular, NumeroConta = @numeroConta, Saldo = @saldo WHERE Id = @id";
+            using (SqlConnection conexao = new SqlConnection(conectarCaminho))
+            using (SqlCommand comando = new SqlCommand(consulta, conexao))
+            {
+                comando.Parameters.AddWithValue("@id", id);
+                comando.Parameters.AddWithValue("@titular", titular);
+                comando.Parameters.AddWithValue("@numeroConta", numeroConta);
+                comando.Parameters.AddWithValue("@saldo", saldo);
+
+                conexao.Open();
+                int resultado = comando.ExecuteNonQuery();
+
+                if (resultado > 0)
+                {
+                    Console.WriteLine("Conta atualizada com sucesso!");
+                }
+                else
+                {
+                    Console.WriteLine("Conta não encontrada!");
+                }
+
+            }
+
+        }
+
+        //D - Delete
+        public static void DeletarConta(int id)
+        {
+            string consulta = "DELETE FROM Contas WHERE Id = @id";
+            using (SqlConnection conexao = new SqlConnection(conectarCaminho))
+            using (SqlCommand comando = new SqlCommand(consulta, conexao))
+            {
+                comando.Parameters.AddWithValue("@Id", id);
+                conexao.Open();
+                int resultado = comando.ExecuteNonQuery();
+                if (resultado > 0)
+                {
+                    Console.WriteLine("Conta deletada com sucesso!");
+                }
+                else
+                {
+                    Console.WriteLine("Conta não encontrada");
+                }
+            }
+
+        }
+    }
+}
