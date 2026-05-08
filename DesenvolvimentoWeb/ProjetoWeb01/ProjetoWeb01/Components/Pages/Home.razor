@@ -1,6 +1,6 @@
 ﻿@page "/"
 @using ProjetoWeb01.Components.Pages.Parciais
-<!-- Isso é comen´tário em html-->
+<!-- Isso é comentário em html-->
 <PageTitle>HOME</PageTitle>
 <CabecalhoPagina/>
 <main class="corpo-pagina">
@@ -12,7 +12,7 @@
         <form class="login-form">
             <!-- Aviso: Implementar validação de campos -->
             <div class="form-grupo">
-                <label>E-mail institucional</label>
+                <label class="form-label">E-mail institucional</label>
                 <div class="input-w">
                     <input type="email" id="email" class="form-input"
                     placeholder="user@Dispatcher.senai.br "/>
@@ -21,12 +21,12 @@
               <div class="form-grupo">
                   <label>Senha</label>
                   <div class="input-w">
-                      <input type="password" id="senha" class"form-input" placeholder="*******"/>
+                      <input type="password" id="senha" class="form-input" placeholder="*******"/>
 
                      </div>
                    </div>
-                   <button type="button" id="btn-entrar" class="btn-login"
-                   Login
+                   <button>
+                   Entrar
                    </button>
                 </div>
             </div>
