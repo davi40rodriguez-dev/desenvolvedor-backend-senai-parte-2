@@ -1,0 +1,18 @@
+﻿/* Estilos da lista de alunos */
+
+
+.cadastro-container{
+  background-color:white;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px -1px rgba(0,0,0,0.06);
+  overflow: hidden;
+}
+
+.login-cabecalho{
+    padding: 1rem;
+    border-bottom: 1px solid ;
+    background-color: #f9fafb;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
