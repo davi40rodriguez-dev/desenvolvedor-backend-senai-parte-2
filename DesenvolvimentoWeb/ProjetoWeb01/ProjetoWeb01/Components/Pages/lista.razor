@@ -1,0 +1,33 @@
+﻿@page "/ListaDeUsuarios"
+
+<CabecalhoPagina />
+<section class="lista-alunos-selection">
+    <div class="lista-alunos-container">
+        <div classs="lista-alunos-cabecalho">
+            <h2 class="contador">
+                0 Cadastros
+            </h2>
+        </div>
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Curso</th>
+                <th>WIFI</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody id="tabela-alunos">
+            <!--Exemplo estático p/ visualização(Remover quando implementar C#)-->
+            <tr>
+                <td>Clodoaldo</td>
+                <td>BackEnd</td>
+                <td>Inativo</td>
+                <td>Aguardando aprovação</td>
+            </tr>
+        </tbody>
+    </div>
+</section>
+
+@code {
+
+}
