@@ -1,4 +1,4 @@
-# 💻 Desenvolvedor Back-End - SENAI (Parte 1)
+# 💻 Desenvolvedor Back-End - SENAI (Parte 2)
 
 Este repositório reúne os exercícios, exemplos e atividades desenvolvidos durante a **primeira etapa** do curso **Desenvolvedor Back-End** realizado no SENAI.
 
